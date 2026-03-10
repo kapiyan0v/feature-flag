@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using FeatureFlags.Api.Entities;
+using System.Data;
 
 namespace FeatureFlags.Api.Data;
 
@@ -9,7 +10,7 @@ public class AppDbContext : DbContext
 
     public DbSet<Feature> Features => Set<Feature>();
     public DbSet<Entities.Environment> Environments => Set<Entities.Environment>();
-    public DbSet<Rule> Rules => Set<Rule>();
+    public DbSet<Entities.Rule> Rules => Set<Entities.Rule>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -20,5 +21,9 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Entities.Environment>()
             .HasIndex(e => e.Slug)
             .IsUnique();
+
+        modelBuilder.Entity<Entities.Rule>()
+           .HasIndex(e => e.Id)
+           .IsUnique();
     }
 }
