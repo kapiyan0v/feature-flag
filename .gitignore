@@ -7,3 +7,16 @@ build
 *.user
 bin/
 obj/
+
+# Visual Studio
+*.suo
+*.user
+*.vsidx
+*.sqlite
+.vs/
+*.sln
+*.slnx
+
+# .NET
+bin/
+obj/
